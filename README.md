@@ -38,3 +38,7 @@ Plugin 'kchmck/vim-coffee-script'
 "version-control layer
 Plugin 'airblade/vim-gitgutter'
 ```
+
+## Footnotes ##
+
+![I don't always use Vim, but when I do I use Spacemacs key bindings](http://i.imgur.com/BlgbKnM.jpg)
