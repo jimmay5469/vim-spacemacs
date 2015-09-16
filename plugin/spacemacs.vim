@@ -11,6 +11,7 @@ let mapleader = "\<SPACE>"
 
 " Alphabetical and avoid <SILENT> for now.
 nmap <LEADER>pf <C-P>
+nmap <LEADER>qq :qa<CR>
 nmap <LEADER>sp :Ag<SPACE>
 nmap <LEADER>fs :w<CR>
 nmap <LEADER>fS :wa<CR>
