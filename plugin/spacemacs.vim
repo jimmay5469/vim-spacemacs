@@ -13,6 +13,7 @@ let mapleader = "\<SPACE>"
 nmap <LEADER>pf <C-P>
 nmap <LEADER>qq :qa<CR>
 nmap <LEADER>sp :Ag<SPACE>
+nmap <LEADER>fed :e ~/.vimrc<CR>
 nmap <LEADER>fs :w<CR>
 nmap <LEADER>fS :wa<CR>
 nmap <LEADER>wc :q<CR>
