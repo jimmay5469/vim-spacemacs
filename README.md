@@ -15,10 +15,14 @@ Plugin 'jimmay5469/vim-spacemacs'
 ## Recommended Plugins ##
 
 ```
-"default configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Default configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Layers
