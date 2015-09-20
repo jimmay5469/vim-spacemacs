@@ -22,7 +22,7 @@ Plugin 'jimmay5469/vim-spacemacs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
-
+Plugin 'scrooloose/nerdtree'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Layers
