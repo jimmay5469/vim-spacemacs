@@ -17,6 +17,7 @@ nmap <LEADER>sp :Ag<SPACE>
 nmap <LEADER>fed :e ~/.vimrc<CR>
 nmap <LEADER>fs :w<CR>
 nmap <LEADER>fS :wa<CR>
+nmap <LEADER>ft :NERDTreeToggle<CR>
 nmap <LEADER>wc :q<CR>
 nmap <LEADER>wh <C-W>h
 nmap <LEADER>wj <C-W>j
