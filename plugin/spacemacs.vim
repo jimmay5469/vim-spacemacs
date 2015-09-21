@@ -24,3 +24,4 @@ nmap <LEADER>wk <C-W>k
 nmap <LEADER>wl <C-W>l
 nmap <LEADER>w- :sp<CR>
 nmap <LEADER>w/ :vsp<CR>
+nmap <LEADER>ww <C-W><C-w>
