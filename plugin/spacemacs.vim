@@ -12,6 +12,7 @@ nmap <LEADER>fs :w<CR>
 nmap <LEADER>fS :wa<CR>
 nmap <LEADER>ft :NERDTreeToggle<CR>
 nmap <LEADER>gb :Gblame<CR>
+nmap <LEADER>gd :Gdiff<CR>
 nmap <LEADER>gs :Gstatus<CR>
 nmap <LEADER>tn :set number!<CR>
 nmap <LEADER>wc :q<CR>
