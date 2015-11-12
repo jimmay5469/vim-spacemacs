@@ -29,6 +29,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-commentary'
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Layers
