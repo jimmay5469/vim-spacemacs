@@ -4,6 +4,7 @@
 
 " Alphabetical and avoid <SILENT> for now.
 nmap <LEADER><TAB> <C-^>
+nmap <LEADER>;; :Commentary<CR>
 nmap <LEADER>fed :e ~/.vimrc<CR>
 nmap <LEADER>ff :CtrlPCurWD<CR>
 nmap <LEADER>fr :CtrlPMRU<CR>
@@ -20,10 +21,11 @@ nmap <LEADER>sp :Ag<SPACE>
 nmap <LEADER>tn :set number!<CR>
 nmap <LEADER>w- :sp<CR>
 nmap <LEADER>w/ :vsp<CR>
+nmap <LEADER>w= <C-W>=
 nmap <LEADER>wc :q<CR>
 nmap <LEADER>wh <C-W>h
 nmap <LEADER>wj <C-W>j
 nmap <LEADER>wk <C-W>k
 nmap <LEADER>wl <C-W>l
+nmap <LEADER>wm :MaximizerToggle<CR>
 nmap <LEADER>ww <C-W><C-W>
-nmap <LEADER>;; :Commentary<CR>
