@@ -23,3 +23,4 @@ nmap <LEADER>wj <C-W>j
 nmap <LEADER>wk <C-W>k
 nmap <LEADER>wl <C-W>l
 nmap <LEADER>ww <C-W><C-W>
+nmap <LEADER>;; :Commentary<CR>
