@@ -14,8 +14,8 @@ nmap <LEADER>ft :NERDTreeToggle<CR>
 nmap <LEADER>gb :Gblame<CR>
 nmap <LEADER>gd :Gdiff<CR>
 nmap <LEADER>gs :Gstatus<CR>
-nmap <LEADER>pf :ProjectRootExe :CtrlPCurWD<CR>
-nmap <LEADER>pt :ProjectRootExe NERDTreeToggle<CR>
+nmap <LEADER>pf :CtrlPRoot<CR>
+nmap <LEADER>pt :NERDTreeToggle<CR>P
 nmap <LEADER>qq :qa<CR>
 nmap <LEADER>sp :Ag<SPACE>
 nmap <LEADER>tn :set number!<CR>
