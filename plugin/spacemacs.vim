@@ -5,6 +5,7 @@
 " Alphabetical and avoid <SILENT> for now.
 nmap <LEADER><TAB> <C-^>
 nmap <LEADER>;; :Commentary<CR>
+vmap <LEADER>; :Commentary<CR>
 nmap <LEADER>fed :e ~/.vimrc<CR>
 nmap <LEADER>ff :CtrlPCurWD<CR>
 nmap <LEADER>fr :CtrlPMRU<CR>
