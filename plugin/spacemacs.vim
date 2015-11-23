@@ -17,7 +17,12 @@ endfunction
 " Alphabetical and avoid <SILENT> for now.
 nmap <LEADER><TAB> <C-^>
 nmap <LEADER>;; :Commentary<CR>
+vmap <LEADER>; :Commentary<CR>
+nmap <LEADER>bb :buffers<CR>
+nmap <LEADER>bd :bdelete<CR>
+nmap <LEADER>bR :e<CR>
 nmap <LEADER>fed :e ~/.vimrc<CR>
+nmap <LEADER>feR :source ~/.vimrc<CR>
 nmap <LEADER>ff :CtrlPCurFile<CR>
 nmap <LEADER>fr :CtrlPMRU<CR>
 nmap <LEADER>fs :w<CR>
