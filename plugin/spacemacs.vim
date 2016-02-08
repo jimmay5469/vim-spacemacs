@@ -44,5 +44,7 @@ nmap <LEADER>wh <C-W>h
 nmap <LEADER>wj <C-W>j
 nmap <LEADER>wk <C-W>k
 nmap <LEADER>wl <C-W>l
+nmap <LEADER>ws <C-W>s
+nmap <LEADER>wv <C-W>v
 nmap <LEADER>wm :MaximizerToggle<CR>
 nmap <LEADER>ww <C-W><C-W>
