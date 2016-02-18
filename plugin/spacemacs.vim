@@ -20,6 +20,8 @@ nmap <LEADER>;; :Commentary<CR>
 vmap <LEADER>; :Commentary<CR>
 nmap <LEADER>bb :buffers<CR>
 nmap <LEADER>bd :bdelete<CR>
+nmap <LEADER>bn :bn<CR>
+nmap <LEADER>bp :bp<CR>
 nmap <LEADER>bR :e<CR>
 nmap <LEADER>fed :e ~/.vimrc<CR>
 nmap <LEADER>feR :source ~/.vimrc<CR>
