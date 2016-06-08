@@ -32,7 +32,14 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-commentary'
 Plugin 'szw/vim-maximizer'
 
+"easymotion
+Plugin 'easymotion/vim-easymotion'
 
+"undo tree
+Plugin 'mbbill/undotree'
+
+"surround operations, optional
+Plugin 'tpope/vim-surround'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Layers
