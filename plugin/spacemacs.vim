@@ -60,6 +60,7 @@ nmap <Leader>qs :xa<CR>
 nmap <Leader>sc :noh<CR>
 nmap <LEADER>sp :Ag<SPACE>
 nmap <LEADER>tn :set number!<CR>
+nmap <LEADER>tl :set wrap!<CR>
 nmap <Leader>Td :GitGutterToggle<CR>
 nmap <LEADER>w- :sp<CR>
 nmap <LEADER>w/ :vsp<CR>
