@@ -65,7 +65,7 @@ nmap <LEADER>Td :GitGutterToggle<CR>
 nmap <LEADER>w- :sp<CR>
 nmap <LEADER>w/ :vsp<CR>
 nmap <LEADER>w= <C-W>=
-nmap <LEADER>wc :q<CR>
+nmap <LEADER>wd :q<CR>
 nmap <LEADER>wh <C-W>h
 nmap <LEADER>wj <C-W>j
 nmap <LEADER>wk <C-W>k
