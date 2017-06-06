@@ -27,20 +27,20 @@ endfunction
 
 " Alphabetical and avoid <SILENT> for now.
 nmap <LEADER><TAB> <C-^>
-nmap <Leader>? :Unite output:nmap\ \<Leader\><CR>
-nmap <Leader>;  <Plug>Commentary
-nmap <Leader>;; <Plug>CommentaryLine
-omap <Leader>;  <Plug>Commentary
-vmap <Leader>;  <Plug>Commentary
-nmap <Leader>au :UndotreeToggle<CR>
+nmap <LEADER>? :Unite output:nmap\ \<LEADER\><CR>
+nmap <LEADER>;  <Plug>Commentary
+nmap <LEADER>;; <Plug>CommentaryLine
+omap <LEADER>;  <Plug>Commentary
+vmap <LEADER>;  <Plug>Commentary
+nmap <LEADER>au :UndotreeToggle<CR>
 nmap <LEADER>bb :buffers<CR>
 nmap <LEADER>bd :bdelete<CR>
 nmap <LEADER>bn :bn<CR>
 nmap <LEADER>bp :bp<CR>
 nmap <LEADER>bR :e<CR>
-nmap <silent> <Leader>el :<C-u>call ToggleErrors()<CR>
-nmap <silent> <Leader>en :lnext<CR>
-nmap <silent> <Leader>ep :lprev<CR>
+nmap <LEADER>el :<C-U>call ToggleErrors()<CR>
+nmap <LEADER>en :lnext<CR>
+nmap <LEADER>ep :lprev<CR>
 nmap <LEADER>fed :e ~/.vimrc<CR>
 nmap <LEADER>feR :source ~/.vimrc<CR>
 nmap <LEADER>ff :CtrlPCurFile<CR>
@@ -51,17 +51,17 @@ nmap <LEADER>ft :NERDTreeToggle<CR>
 nmap <LEADER>gb :Gblame<CR>
 nmap <LEADER>gd :Gdiff<CR>
 nmap <LEADER>gs :Gstatus<CR>
-nmap <Leader>j= mzgg=G`z
+nmap <LEADER>j= mzgg=G`z
 nmap <LEADER>pf :CtrlPRoot<CR>
 nmap <LEADER>pt :call spacemacs#toggleExplorerAtRoot()<CR>
 nmap <LEADER>qq :qa<CR>
-nmap <Leader>qQ :qa!<CR>
-nmap <Leader>qs :xa<CR>
-nmap <Leader>sc :noh<CR>
+nmap <LEADER>qQ :qa!<CR>
+nmap <LEADER>qs :xa<CR>
+nmap <LEADER>sc :noh<CR>
 nmap <LEADER>sp :Ag<SPACE>
 nmap <LEADER>tn :set number!<CR>
 nmap <LEADER>tl :set wrap!<CR>
-nmap <Leader>Td :GitGutterToggle<CR>
+nmap <LEADER>Td :GitGutterToggle<CR>
 nmap <LEADER>w- :sp<CR>
 nmap <LEADER>w/ :vsp<CR>
 nmap <LEADER>w= <C-W>=
@@ -74,4 +74,4 @@ nmap <LEADER>ws <C-W>s
 nmap <LEADER>wv <C-W>v
 nmap <LEADER>wm :MaximizerToggle<CR>
 nmap <LEADER>ww <C-W><C-W>
-nmap <Leader>y <Plug>(easymotion-bd-jk)
+nmap <LEADER>y <Plug>(easymotion-bd-jk)
