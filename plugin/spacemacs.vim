@@ -1,40 +1,4 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! spacemacs#toggleExplorerAtRoot()
-  if exists(':ProjectRootExe')
-    exe "ProjectRootExe NERDTreeToggle"
-  else
-    exe "NERDTreeToggle"
-  endif
-endfunction
-
-" errors (syntastic integration)
-function! ToggleErrors()
-  let old_last_winnr = winnr('$')
-  SyntasticToggleMode
-  " lclose
-  if old_last_winnr == winnr('$')
-    " Nothing was closed, open syntastic error location panel
-    " Errors
-    SyntasticCheck
-  endif
-endfunction
-
-function! s:mergeBindings(baseBindings, mergeBindings) abort
-  for maptype in keys(a:mergeBindings)
-    if !has_key(a:baseBindings, maptype)
-      let a:baseBindings[maptype] = {}
-    endif
-
-    for binding in keys(a:mergeBindings[maptype])
-      let a:baseBindings[maptype][binding] = a:mergeBindings[maptype][binding]
-    endfor
-  endfor
-  return a:baseBindings
-endfunction
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Keybindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -73,25 +37,52 @@ let s:bindingGroups = {
       \ 'ww': '<C-W><C-W>',
     \ },
   \ },
-  \ 'unclaimed': {
+  \ 'airblade/vim-gitgutter': {
     \ 'nmap': {
-      \ '?': ':Unite output:nmap\ \<LEADER\><CR>',
-      \ ';': ' <Plug>Commentary',
-      \ ';;': '<Plug>CommentaryLine',
-      \ 'au': ':UndotreeToggle<CR>',
-      \ 'el': ':<C-U>call ToggleErrors()<CR>',
+      \ 'Td': ':GitGutterToggle<CR>',
+    \ },
+  \ },
+  \ 'easymotion/vim-easymotion': {
+    \ 'nmap': {
+      \ 'y': '<Plug>(easymotion-bd-jk)',
+    \ },
+  \ },
+  \ 'kien/ctrlp.vim': {
+    \ 'nmap': {
       \ 'ff': ':CtrlPCurFile<CR>',
       \ 'fr': ':CtrlPMRU<CR>',
-      \ 'ft': ':NERDTreeToggle<CR>',
-      \ 'gb': ':Gblame<CR>',
-      \ 'gd': ':Gdiff<CR>',
-      \ 'gs': ':Gstatus<CR>',
       \ 'pf': ':CtrlPRoot<CR>',
-      \ 'pt': ':call spacemacs#toggleExplorerAtRoot()<CR>',
+    \ },
+  \ },
+  \ 'mbbill/undotree': {
+    \ 'nmap': {
+      \ 'au': ':UndotreeToggle<CR>',
+    \ },
+  \ },
+  \ 'rking/ag.vim': {
+    \ 'nmap': {
       \ 'sp': ':Ag<SPACE>',
-      \ 'Td': ':GitGutterToggle<CR>',
+    \ },
+  \ },
+  \ 'scrooloose/nerdtree': {
+    \ 'nmap': {
+      \ 'ft': ':NERDTreeToggle<CR>',
+    \ },
+  \ },
+  \ 'shougo/unite.vim': {
+    \ 'nmap': {
+      \ '?': ':Unite output:nmap\ \<LEADER\><CR>',
+    \ },
+  \ },
+  \ 'szw/vim-maximizer': {
+    \ 'nmap': {
       \ 'wm': ':MaximizerToggle<CR>',
-      \ 'y': '<Plug>(easymotion-bd-jk)',
+    \ },
+  \ },
+  \ 'tpope/vim-commentary': {
+    \ 'nmap': {
+      \ ';': ' <Plug>Commentary',
+      \ ';;': '<Plug>CommentaryLine',
     \ },
     \ 'vmap': {
       \ ';': ' <Plug>Commentary',
@@ -100,20 +91,65 @@ let s:bindingGroups = {
       \ ';': ' <Plug>Commentary',
     \ },
   \ },
+  \ 'tpope/vim-fugitive': {
+    \ 'nmap': {
+      \ 'gb': ':Gblame<CR>',
+      \ 'gd': ':Gdiff<CR>',
+      \ 'gs': ':Gstatus<CR>',
+    \ },
+  \ },
 \ }
 
-"global variable defaults
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Global Variable Defaults
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 if !exists('g:spacemacs#leader')
   let g:spacemacs#leader = '<LEADER>'
 endif
 if !exists('g:spacemacs#bindingGroups')
-  let g:spacemacs#bindingGroups = ['vim', 'unclaimed']
+  let g:spacemacs#bindingGroups = [
+    \ 'vim',
+    \ 'airblade/vim-gitgutter',
+    \ 'easymotion/vim-easymotion',
+    \ 'kien/ctrlp.vim',
+    \ 'mbbill/undotree',
+    \ 'rking/ag.vim',
+    \ 'scrooloose/nerdtree',
+    \ 'shougo/unite.vim',
+    \ 'szw/vim-maximizer',
+    \ 'tpope/vim-commentary',
+    \ 'tpope/vim-fugitive',
+  \ ]
 endif
 if !exists('g:spacemacs#bindingOverrides')
   let g:spacemacs#bindingOverrides = {}
 endif
 
-"merge bingings
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! s:mergeBindings(baseBindings, mergeBindings) abort
+  for maptype in keys(a:mergeBindings)
+    if !has_key(a:baseBindings, maptype)
+      let a:baseBindings[maptype] = {}
+    endif
+
+    for binding in keys(a:mergeBindings[maptype])
+      let a:baseBindings[maptype][binding] = a:mergeBindings[maptype][binding]
+    endfor
+  endfor
+  return a:baseBindings
+endfunction
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Merge Keybindings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let s:bindings = {}
 for group in g:spacemacs#bindingGroups
   if has_key(s:bindingGroups, group)
@@ -122,7 +158,11 @@ for group in g:spacemacs#bindingGroups
 endfor
 let s:bindings = s:mergeBindings(s:bindings, g:spacemacs#bindingOverrides)
 
-"create keybindings
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Create Keybindings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 for maptype in keys(s:bindings)
   for binding in keys(s:bindings[maptype])
     execute maptype . ' ' . g:spacemacs#leader .  binding . ' ' . s:bindings[maptype][binding]
