@@ -11,75 +11,94 @@ endfunction
 
 " errors (syntastic integration)
 function! ToggleErrors()
-    let old_last_winnr = winnr('$')
-    SyntasticToggleMode
-    " lclose
-    if old_last_winnr == winnr('$')
-        " Nothing was closed, open syntastic error location panel
-        " Errors
-        SyntasticCheck
+  let old_last_winnr = winnr('$')
+  SyntasticToggleMode
+  " lclose
+  if old_last_winnr == winnr('$')
+    " Nothing was closed, open syntastic error location panel
+    " Errors
+    SyntasticCheck
+  endif
+endfunction
+
+function! s:mergeBindings(baseBindings, mergeBindings) abort
+  for maptype in keys(a:mergeBindings)
+    if !has_key(a:baseBindings, maptype)
+      let a:baseBindings[maptype] = {}
     endif
+
+    for binding in keys(a:mergeBindings[maptype])
+      let a:baseBindings[maptype][binding] = a:mergeBindings[maptype][binding]
+    endfor
+  endfor
+  return a:baseBindings
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Keybindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let spacemacs#defaultBindings = {
-  \ 'nmap': {
-    \ '<TAB>': '<C-^>',
-    \ '?': ':Unite output:nmap\ \<LEADER\><CR>',
-    \ ';': ' <Plug>Commentary',
-    \ ';;': '<Plug>CommentaryLine',
-    \ 'au': ':UndotreeToggle<CR>',
-    \ 'bb': ':buffers<CR>',
-    \ 'bd': ':bdelete<CR>',
-    \ 'bn': ':bn<CR>',
-    \ 'bp': ':bp<CR>',
-    \ 'bR': ':e<CR>',
-    \ 'el': ':<C-U>call ToggleErrors()<CR>',
-    \ 'en': ':lnext<CR>',
-    \ 'ep': ':lprev<CR>',
-    \ 'fed': ':e ~/.vimrc<CR>',
-    \ 'feR': ':source ~/.vimrc<CR>',
-    \ 'ff': ':CtrlPCurFile<CR>',
-    \ 'fr': ':CtrlPMRU<CR>',
-    \ 'fs': ':w<CR>',
-    \ 'fS': ':wa<CR>',
-    \ 'ft': ':NERDTreeToggle<CR>',
-    \ 'gb': ':Gblame<CR>',
-    \ 'gd': ':Gdiff<CR>',
-    \ 'gs': ':Gstatus<CR>',
-    \ 'j=': 'mzgg=G`z',
-    \ 'pf': ':CtrlPRoot<CR>',
-    \ 'pt': ':call spacemacs#toggleExplorerAtRoot()<CR>',
-    \ 'qq': ':qa<CR>',
-    \ 'qQ': ':qa!<CR>',
-    \ 'qs': ':xa<CR>',
-    \ 'sc': ':noh<CR>',
-    \ 'sp': ':Ag<SPACE>',
-    \ 'tn': ':set number!<CR>',
-    \ 'tl': ':set wrap!<CR>',
-    \ 'Td': ':GitGutterToggle<CR>',
-    \ 'w-': ':sp<CR>',
-    \ 'w/': ':vsp<CR>',
-    \ 'w=': '<C-W>=',
-    \ 'wd': ':q<CR>',
-    \ 'wh': '<C-W>h',
-    \ 'wj': '<C-W>j',
-    \ 'wk': '<C-W>k',
-    \ 'wl': '<C-W>l',
-    \ 'ws': '<C-W>s',
-    \ 'wv': '<C-W>v',
-    \ 'wm': ':MaximizerToggle<CR>',
-    \ 'ww': '<C-W><C-W>',
-    \ 'y': '<Plug>(easymotion-bd-jk)',
+let s:bindingGroups = {
+  \ 'vim': {
+    \ 'nmap': {
+      \ '<TAB>': '<C-^>',
+      \ 'bb': ':buffers<CR>',
+      \ 'bd': ':bdelete<CR>',
+      \ 'bn': ':bn<CR>',
+      \ 'bp': ':bp<CR>',
+      \ 'bR': ':e<CR>',
+      \ 'en': ':lnext<CR>',
+      \ 'ep': ':lprev<CR>',
+      \ 'fed': ':e ~/.vimrc<CR>',
+      \ 'feR': ':source ~/.vimrc<CR>',
+      \ 'fs': ':w<CR>',
+      \ 'fS': ':wa<CR>',
+      \ 'j=': 'mzgg=G`z',
+      \ 'qq': ':qa<CR>',
+      \ 'qQ': ':qa!<CR>',
+      \ 'qs': ':xa<CR>',
+      \ 'sc': ':noh<CR>',
+      \ 'tn': ':set number!<CR>',
+      \ 'tl': ':set wrap!<CR>',
+      \ 'w-': ':sp<CR>',
+      \ 'w/': ':vsp<CR>',
+      \ 'w=': '<C-W>=',
+      \ 'wd': ':q<CR>',
+      \ 'wh': '<C-W>h',
+      \ 'wj': '<C-W>j',
+      \ 'wk': '<C-W>k',
+      \ 'wl': '<C-W>l',
+      \ 'ws': '<C-W>s',
+      \ 'wv': '<C-W>v',
+      \ 'ww': '<C-W><C-W>',
+    \ },
   \ },
-  \ 'vmap': {
-    \ ';': ' <Plug>Commentary',
-  \ },
-  \ 'omap': {
-    \ ';': ' <Plug>Commentary',
+  \ 'unclaimed': {
+    \ 'nmap': {
+      \ '?': ':Unite output:nmap\ \<LEADER\><CR>',
+      \ ';': ' <Plug>Commentary',
+      \ ';;': '<Plug>CommentaryLine',
+      \ 'au': ':UndotreeToggle<CR>',
+      \ 'el': ':<C-U>call ToggleErrors()<CR>',
+      \ 'ff': ':CtrlPCurFile<CR>',
+      \ 'fr': ':CtrlPMRU<CR>',
+      \ 'ft': ':NERDTreeToggle<CR>',
+      \ 'gb': ':Gblame<CR>',
+      \ 'gd': ':Gdiff<CR>',
+      \ 'gs': ':Gstatus<CR>',
+      \ 'pf': ':CtrlPRoot<CR>',
+      \ 'pt': ':call spacemacs#toggleExplorerAtRoot()<CR>',
+      \ 'sp': ':Ag<SPACE>',
+      \ 'Td': ':GitGutterToggle<CR>',
+      \ 'wm': ':MaximizerToggle<CR>',
+      \ 'y': '<Plug>(easymotion-bd-jk)',
+    \ },
+    \ 'vmap': {
+      \ ';': ' <Plug>Commentary',
+    \ },
+    \ 'omap': {
+      \ ';': ' <Plug>Commentary',
+    \ },
   \ },
 \ }
 
@@ -87,26 +106,25 @@ let spacemacs#defaultBindings = {
 if !exists('g:spacemacs#leader')
   let g:spacemacs#leader = '<LEADER>'
 endif
-if !exists('g:spacemacs#bindings')
-  let g:spacemacs#bindings = {}
+if !exists('g:spacemacs#groups')
+  let g:spacemacs#groups = ['vim', 'unclaimed']
+endif
+if !exists('g:spacemacs#bindingOverrides')
+  let g:spacemacs#bindingOverrides = {}
 endif
 
-"copy necessary default bindings
-for maptype in keys(spacemacs#defaultBindings)
-  if !has_key(g:spacemacs#bindings, maptype)
-    let g:spacemacs#bindings[maptype] = {}
+"merge bingings
+let s:bindings = {}
+for group in g:spacemacs#groups
+  if has_key(s:bindingGroups, group)
+    let s:bindings = s:mergeBindings(s:bindings, s:bindingGroups[group])
   endif
-
-  for binding in keys(spacemacs#defaultBindings[maptype])
-    if !has_key(g:spacemacs#bindings[maptype], binding)
-      let g:spacemacs#bindings[maptype][binding] = spacemacs#defaultBindings[maptype][binding]
-    endif
-  endfor
 endfor
+let s:bindings = s:mergeBindings(s:bindings, g:spacemacs#bindingOverrides)
 
 "create keybindings
-for maptype in keys(g:spacemacs#bindings)
-  for binding in keys(g:spacemacs#bindings[maptype])
-    execute maptype . ' ' . g:spacemacs#leader .  binding . ' ' . g:spacemacs#bindings[maptype][binding]
+for maptype in keys(s:bindings)
+  for binding in keys(s:bindings[maptype])
+    execute maptype . ' ' . g:spacemacs#leader .  binding . ' ' . s:bindings[maptype][binding]
   endfor
 endfor
