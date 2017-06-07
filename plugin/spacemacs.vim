@@ -2,7 +2,7 @@
 " Keybindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let s:bindingGroups = {
+let s:keybindingGroups = {
   \ 'vim': {
     \ 'nmap': {
       \ '<TAB>': '<C-^>',
@@ -108,8 +108,8 @@ let s:bindingGroups = {
 if !exists('g:spacemacs#leader')
   let g:spacemacs#leader = '<LEADER>'
 endif
-if !exists('g:spacemacs#bindingGroups')
-  let g:spacemacs#bindingGroups = [
+if !exists('g:spacemacs#keybindingGroups')
+  let g:spacemacs#keybindingGroups = [
     \ 'vim',
     \ 'airblade/vim-gitgutter',
     \ 'easymotion/vim-easymotion',
@@ -123,8 +123,8 @@ if !exists('g:spacemacs#bindingGroups')
     \ 'tpope/vim-fugitive',
   \ ]
 endif
-if !exists('g:spacemacs#bindingOverrides')
-  let g:spacemacs#bindingOverrides = {}
+if !exists('g:spacemacs#keybindingOverrides')
+  let g:spacemacs#keybindingOverrides = {}
 endif
 
 
@@ -132,17 +132,17 @@ endif
 " Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-function! s:mergeBindings(baseBindings, mergeBindings) abort
-  for maptype in keys(a:mergeBindings)
-    if !has_key(a:baseBindings, maptype)
-      let a:baseBindings[maptype] = {}
+function! s:mergeKeybindings(baseKeybindings, mergeKeybindings) abort
+  for maptype in keys(a:mergeKeybindings)
+    if !has_key(a:baseKeybindings, maptype)
+      let a:baseKeybindings[maptype] = {}
     endif
 
-    for binding in keys(a:mergeBindings[maptype])
-      let a:baseBindings[maptype][binding] = a:mergeBindings[maptype][binding]
+    for keybinding in keys(a:mergeKeybindings[maptype])
+      let a:baseKeybindings[maptype][keybinding] = a:mergeKeybindings[maptype][keybinding]
     endfor
   endfor
-  return a:baseBindings
+  return a:baseKeybindings
 endfunction
 
 
@@ -150,21 +150,21 @@ endfunction
 " Merge Keybindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let s:bindings = {}
-for group in g:spacemacs#bindingGroups
-  if has_key(s:bindingGroups, group)
-    let s:bindings = s:mergeBindings(s:bindings, s:bindingGroups[group])
+let s:keybindings = {}
+for group in g:spacemacs#keybindingGroups
+  if has_key(s:keybindingGroups, group)
+    let s:keybindings = s:mergeKeybindings(s:keybindings, s:keybindingGroups[group])
   endif
 endfor
-let s:bindings = s:mergeBindings(s:bindings, g:spacemacs#bindingOverrides)
+let s:keybindings = s:mergeKeybindings(s:keybindings, g:spacemacs#keybindingOverrides)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Create Keybindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-for maptype in keys(s:bindings)
-  for binding in keys(s:bindings[maptype])
-    execute maptype . ' ' . g:spacemacs#leader .  binding . ' ' . s:bindings[maptype][binding]
+for maptype in keys(s:keybindings)
+  for keybinding in keys(s:keybindings[maptype])
+    execute maptype . ' ' . g:spacemacs#leader .  keybinding . ' ' . s:keybindings[maptype][keybinding]
   endfor
 endfor
