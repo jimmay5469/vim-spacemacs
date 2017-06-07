@@ -106,8 +106,8 @@ let s:bindingGroups = {
 if !exists('g:spacemacs#leader')
   let g:spacemacs#leader = '<LEADER>'
 endif
-if !exists('g:spacemacs#groups')
-  let g:spacemacs#groups = ['vim', 'unclaimed']
+if !exists('g:spacemacs#bindingGroups')
+  let g:spacemacs#bindingGroups = ['vim', 'unclaimed']
 endif
 if !exists('g:spacemacs#bindingOverrides')
   let g:spacemacs#bindingOverrides = {}
@@ -115,7 +115,7 @@ endif
 
 "merge bingings
 let s:bindings = {}
-for group in g:spacemacs#groups
+for group in g:spacemacs#bindingGroups
   if has_key(s:bindingGroups, group)
     let s:bindings = s:mergeBindings(s:bindings, s:bindingGroups[group])
   endif
