@@ -107,6 +107,6 @@ endfor
 "create keybindings
 for maptype in keys(g:spacemacs#bindings)
   for binding in keys(g:spacemacs#bindings[maptype])
-    execute maptype . ' ' . g:spacemacs#leader . '' .  binding . ' ' . g:spacemacs#bindings[maptype][binding]
+    execute maptype . ' ' . g:spacemacs#leader .  binding . ' ' . g:spacemacs#bindings[maptype][binding]
   endfor
 endfor
