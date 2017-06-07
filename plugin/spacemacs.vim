@@ -2,7 +2,7 @@
 " Native Keybindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let s:nativeKeybindings = {
-  \ 'nmap': {
+  \ 'nnoremap': {
     \ '<TAB>': '<C-^>',
     \ 'bb': ':buffers<CR>',
     \ 'bd': ':bdelete<CR>',
@@ -42,7 +42,7 @@ let s:nativeKeybindings = {
 
 let s:pluginKeybindings = {
   \ 'airblade/vim-gitgutter': {
-    \ 'nmap': {
+    \ 'nnoremap': {
       \ 'Td': ':GitGutterToggle<CR>',
     \ },
   \ },
@@ -52,24 +52,24 @@ let s:pluginKeybindings = {
     \ },
   \ },
   \ 'kien/ctrlp.vim': {
-    \ 'nmap': {
+    \ 'nnoremap': {
       \ 'ff': ':CtrlPCurFile<CR>',
       \ 'fr': ':CtrlPMRU<CR>',
       \ 'pf': ':CtrlPRoot<CR>',
     \ },
   \ },
   \ 'mbbill/undotree': {
-    \ 'nmap': {
+    \ 'nnoremap': {
       \ 'au': ':UndotreeToggle<CR>',
     \ },
   \ },
   \ 'rking/ag.vim': {
-    \ 'nmap': {
+    \ 'nnoremap': {
       \ 'sp': ':Ag<SPACE>',
     \ },
   \ },
   \ 'scrooloose/nerdtree': {
-    \ 'nmap': {
+    \ 'nnoremap': {
       \ 'ft': ':NERDTreeToggle<CR>',
     \ },
   \ },
@@ -79,7 +79,7 @@ let s:pluginKeybindings = {
     \ },
   \ },
   \ 'szw/vim-maximizer': {
-    \ 'nmap': {
+    \ 'nnoremap': {
       \ 'wm': ':MaximizerToggle<CR>',
     \ },
   \ },
@@ -96,7 +96,7 @@ let s:pluginKeybindings = {
     \ },
   \ },
   \ 'tpope/vim-fugitive': {
-    \ 'nmap': {
+    \ 'nnoremap': {
       \ 'gb': ':Gblame<CR>',
       \ 'gd': ':Gdiff<CR>',
       \ 'gs': ':Gstatus<CR>',
