@@ -1,42 +1,46 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Keybindings
+" Native Keybindings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let s:nativeKeybindings = {
+  \ 'nmap': {
+    \ '<TAB>': '<C-^>',
+    \ 'bb': ':buffers<CR>',
+    \ 'bd': ':bdelete<CR>',
+    \ 'bn': ':bn<CR>',
+    \ 'bp': ':bp<CR>',
+    \ 'bR': ':e<CR>',
+    \ 'en': ':lnext<CR>',
+    \ 'ep': ':lprev<CR>',
+    \ 'fed': ':e ~/.vimrc<CR>',
+    \ 'feR': ':source ~/.vimrc<CR>',
+    \ 'fs': ':w<CR>',
+    \ 'fS': ':wa<CR>',
+    \ 'j=': 'mzgg=G`z',
+    \ 'qq': ':qa<CR>',
+    \ 'qQ': ':qa!<CR>',
+    \ 'qs': ':xa<CR>',
+    \ 'sc': ':noh<CR>',
+    \ 'tn': ':set number!<CR>',
+    \ 'tl': ':set wrap!<CR>',
+    \ 'w-': ':sp<CR>',
+    \ 'w/': ':vsp<CR>',
+    \ 'w=': '<C-W>=',
+    \ 'wd': ':q<CR>',
+    \ 'wh': '<C-W>h',
+    \ 'wj': '<C-W>j',
+    \ 'wk': '<C-W>k',
+    \ 'wl': '<C-W>l',
+    \ 'ws': '<C-W>s',
+    \ 'wv': '<C-W>v',
+    \ 'ww': '<C-W><C-W>',
+  \ },
+\ }
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin Keybindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let s:keybindingGroups = {
-  \ 'vim': {
-    \ 'nmap': {
-      \ '<TAB>': '<C-^>',
-      \ 'bb': ':buffers<CR>',
-      \ 'bd': ':bdelete<CR>',
-      \ 'bn': ':bn<CR>',
-      \ 'bp': ':bp<CR>',
-      \ 'bR': ':e<CR>',
-      \ 'en': ':lnext<CR>',
-      \ 'ep': ':lprev<CR>',
-      \ 'fed': ':e ~/.vimrc<CR>',
-      \ 'feR': ':source ~/.vimrc<CR>',
-      \ 'fs': ':w<CR>',
-      \ 'fS': ':wa<CR>',
-      \ 'j=': 'mzgg=G`z',
-      \ 'qq': ':qa<CR>',
-      \ 'qQ': ':qa!<CR>',
-      \ 'qs': ':xa<CR>',
-      \ 'sc': ':noh<CR>',
-      \ 'tn': ':set number!<CR>',
-      \ 'tl': ':set wrap!<CR>',
-      \ 'w-': ':sp<CR>',
-      \ 'w/': ':vsp<CR>',
-      \ 'w=': '<C-W>=',
-      \ 'wd': ':q<CR>',
-      \ 'wh': '<C-W>h',
-      \ 'wj': '<C-W>j',
-      \ 'wk': '<C-W>k',
-      \ 'wl': '<C-W>l',
-      \ 'ws': '<C-W>s',
-      \ 'wv': '<C-W>v',
-      \ 'ww': '<C-W><C-W>',
-    \ },
-  \ },
+let s:pluginKeybindings = {
   \ 'airblade/vim-gitgutter': {
     \ 'nmap': {
       \ 'Td': ':GitGutterToggle<CR>',
@@ -108,9 +112,8 @@ let s:keybindingGroups = {
 if !exists('g:spacemacs#leader')
   let g:spacemacs#leader = '<LEADER>'
 endif
-if !exists('g:spacemacs#keybindingGroups')
-  let g:spacemacs#keybindingGroups = [
-    \ 'vim',
+if !exists('g:spacemacs#plugins')
+  let g:spacemacs#plugins = [
     \ 'airblade/vim-gitgutter',
     \ 'easymotion/vim-easymotion',
     \ 'kien/ctrlp.vim',
@@ -151,9 +154,10 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let s:keybindings = {}
-for group in g:spacemacs#keybindingGroups
-  if has_key(s:keybindingGroups, group)
-    let s:keybindings = s:mergeKeybindings(s:keybindings, s:keybindingGroups[group])
+let s:keybindings = s:mergeKeybindings(s:keybindings, s:nativeKeybindings)
+for plugin in g:spacemacs#plugins
+  if has_key(s:pluginKeybindings, plugin)
+    let s:keybindings = s:mergeKeybindings(s:keybindings, s:pluginKeybindings[plugin])
   endif
 endfor
 let s:keybindings = s:mergeKeybindings(s:keybindings, g:spacemacs#keybindingOverrides)
