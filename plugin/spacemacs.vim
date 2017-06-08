@@ -128,7 +128,7 @@ if !exists('g:spacemacs#plugins')
   \ ]
 endif
 if !exists('g:spacemacs#excludes')
-  let g:spacemacs#excludes = ['^e']
+  let g:spacemacs#excludes = []
 endif
 
 
