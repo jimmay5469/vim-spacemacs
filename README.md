@@ -1,6 +1,6 @@
 # spacemacs.vim #
 
-Spacemacs key bindings ported to Vim.
+[Spacemacs](http://spacemacs.org/) key bindings ported to Vim.
 
 Please open an issue or create a pull request if there is a Spacemacs key binding or plugin specific key binding that you use which is not included.
 
