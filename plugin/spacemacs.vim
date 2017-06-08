@@ -127,8 +127,8 @@ if !exists('g:spacemacs#plugins')
     \ 'tpope/vim-fugitive',
   \ ]
 endif
-if !exists('g:spacemacs#keybindingOverrides')
-  let g:spacemacs#keybindingOverrides = {}
+if !exists('g:spacemacs#excludes')
+  let g:spacemacs#excludes = ['^e']
 endif
 
 
@@ -149,11 +149,23 @@ function! s:mergeKeybindings(baseKeybindings, mergeKeybindings) abort
   return a:baseKeybindings
 endfunction
 
+function! s:excludeKeybindingPattern(baseKeybindings, pattern) abort
+  for maptype in keys(a:baseKeybindings)
+    for keybinding in keys(a:baseKeybindings[maptype])
+      if keybinding =~ a:pattern
+        unlet a:baseKeybindings[maptype][keybinding]
+      endif
+    endfor
+  endfor
+  return a:baseKeybindings
+endfunction
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Wireup
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Merge Keybindings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 let s:keybindings = {}
 let s:keybindings = s:mergeKeybindings(s:keybindings, s:nativeKeybindings)
 for plugin in g:spacemacs#plugins
@@ -161,13 +173,13 @@ for plugin in g:spacemacs#plugins
     let s:keybindings = s:mergeKeybindings(s:keybindings, s:pluginKeybindings[plugin])
   endif
 endfor
-let s:keybindings = s:mergeKeybindings(s:keybindings, g:spacemacs#keybindingOverrides)
 
+" Removing Excludes
+for pattern in spacemacs#excludes
+  let s:keybindings = s:excludeKeybindingPattern(s:keybindings, pattern)
+endfor
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Create Keybindings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 for maptype in keys(s:keybindings)
   for keybinding in keys(s:keybindings[maptype])
     execute maptype . ' ' . g:spacemacs#leader .  keybinding . ' ' . s:keybindings[maptype][keybinding]
