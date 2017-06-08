@@ -1,8 +1,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Native Keybindings
+" Native Key Bindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let s:nativeKeybindings = {
+let s:nativeKeyBindings = {
   \ 'nnoremap': {
     \ '<TAB>': '<C-^>',
     \ 'bb': ':buffers<CR>',
@@ -39,53 +39,53 @@ let s:nativeKeybindings = {
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin Keybindings
+" Plugin Key Bindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let s:pluginKeybindings = {}
-let s:pluginKeybindings['airblade/vim-gitgutter'] = {
+let s:pluginKeyBindings = {}
+let s:pluginKeyBindings['airblade/vim-gitgutter'] = {
   \ 'nnoremap': {
     \ 'Td': ':GitGutterToggle<CR>',
   \ },
 \ }
-let s:pluginKeybindings['easymotion/vim-easymotion'] = {
+let s:pluginKeyBindings['easymotion/vim-easymotion'] = {
   \ 'nmap': {
     \ 'y': '<Plug>(easymotion-bd-jk)',
   \ },
 \ }
-let s:pluginKeybindings['kien/ctrlp.vim'] = {
+let s:pluginKeyBindings['kien/ctrlp.vim'] = {
   \ 'nnoremap': {
     \ 'ff': ':CtrlPCurFile<CR>',
     \ 'fr': ':CtrlPMRU<CR>',
     \ 'pf': ':CtrlPRoot<CR>',
   \ },
 \ }
-let s:pluginKeybindings['mbbill/undotree'] = {
+let s:pluginKeyBindings['mbbill/undotree'] = {
   \ 'nnoremap': {
     \ 'au': ':UndotreeToggle<CR>',
   \ },
 \ }
-let s:pluginKeybindings['rking/ag.vim'] = {
+let s:pluginKeyBindings['rking/ag.vim'] = {
   \ 'nnoremap': {
     \ 'sp': ':Ag<SPACE>',
   \ },
 \ }
-let s:pluginKeybindings['scrooloose/nerdtree'] = {
+let s:pluginKeyBindings['scrooloose/nerdtree'] = {
   \ 'nnoremap': {
     \ 'ft': ':NERDTreeToggle<CR>',
   \ },
 \ }
-let s:pluginKeybindings['shougo/unite.vim'] = {
+let s:pluginKeyBindings['shougo/unite.vim'] = {
   \ 'nmap': {
     \ '?': ':Unite output:nmap\ \<LEADER\><CR>',
   \ },
 \ }
-let s:pluginKeybindings['szw/vim-maximizer'] = {
+let s:pluginKeyBindings['szw/vim-maximizer'] = {
   \ 'nnoremap': {
     \ 'wm': ':MaximizerToggle<CR>',
   \ },
 \ }
-let s:pluginKeybindings['tpope/vim-commentary'] = {
+let s:pluginKeyBindings['tpope/vim-commentary'] = {
   \ 'nmap': {
     \ ';': ' <Plug>Commentary',
     \ ';;': '<Plug>CommentaryLine',
@@ -97,7 +97,7 @@ let s:pluginKeybindings['tpope/vim-commentary'] = {
     \ ';': ' <Plug>Commentary',
   \ },
 \ }
-let s:pluginKeybindings['tpope/vim-fugitive'] = {
+let s:pluginKeyBindings['tpope/vim-fugitive'] = {
   \ 'nnoremap': {
     \ 'gb': ':Gblame<CR>',
     \ 'gd': ':Gdiff<CR>',
@@ -136,28 +136,28 @@ endif
 " Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-function! s:mergeKeybindings(baseKeybindings, mergeKeybindings) abort
-  for maptype in keys(a:mergeKeybindings)
-    if !has_key(a:baseKeybindings, maptype)
-      let a:baseKeybindings[maptype] = {}
+function! s:mergeKeyBindings(baseKeyBindings, mergeKeyBindings) abort
+  for mapType in keys(a:mergeKeyBindings)
+    if !has_key(a:baseKeyBindings, mapType)
+      let a:baseKeyBindings[mapType] = {}
     endif
 
-    for keybinding in keys(a:mergeKeybindings[maptype])
-      let a:baseKeybindings[maptype][keybinding] = a:mergeKeybindings[maptype][keybinding]
+    for keyBinding in keys(a:mergeKeyBindings[mapType])
+      let a:baseKeyBindings[mapType][keyBinding] = a:mergeKeyBindings[mapType][keyBinding]
     endfor
   endfor
-  return a:baseKeybindings
+  return a:baseKeyBindings
 endfunction
 
-function! s:excludeKeybindingPattern(baseKeybindings, pattern) abort
-  for maptype in keys(a:baseKeybindings)
-    for keybinding in keys(a:baseKeybindings[maptype])
-      if keybinding =~ a:pattern
-        unlet a:baseKeybindings[maptype][keybinding]
+function! s:excludeKeyBindingPattern(baseKeyBindings, pattern) abort
+  for mapType in keys(a:baseKeyBindings)
+    for keyBinding in keys(a:baseKeyBindings[mapType])
+      if keyBinding =~ a:pattern
+        unlet a:baseKeyBindings[mapType][keyBinding]
       endif
     endfor
   endfor
-  return a:baseKeybindings
+  return a:baseKeyBindings
 endfunction
 
 
@@ -165,23 +165,23 @@ endfunction
 " Wireup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Merge Keybindings
-let s:keybindings = {}
-let s:keybindings = s:mergeKeybindings(s:keybindings, s:nativeKeybindings)
+" Merge Key Bindings
+let s:keyBindings = {}
+let s:keyBindings = s:mergeKeyBindings(s:keyBindings, s:nativeKeyBindings)
 for plugin in g:spacemacs#plugins
-  if has_key(s:pluginKeybindings, plugin)
-    let s:keybindings = s:mergeKeybindings(s:keybindings, s:pluginKeybindings[plugin])
+  if has_key(s:pluginKeyBindings, plugin)
+    let s:keyBindings = s:mergeKeyBindings(s:keyBindings, s:pluginKeyBindings[plugin])
   endif
 endfor
 
 " Removing Excludes
 for pattern in spacemacs#excludes
-  let s:keybindings = s:excludeKeybindingPattern(s:keybindings, pattern)
+  let s:keyBindings = s:excludeKeyBindingPattern(s:keyBindings, pattern)
 endfor
 
-" Create Keybindings
-for maptype in keys(s:keybindings)
-  for keybinding in keys(s:keybindings[maptype])
-    execute maptype . ' ' . g:spacemacs#leader .  keybinding . ' ' . s:keybindings[maptype][keybinding]
+" Create Key Bindings
+for mapType in keys(s:keyBindings)
+  for keyBinding in keys(s:keyBindings[mapType])
+    execute mapType . ' ' . g:spacemacs#leader .  keyBinding . ' ' . s:keyBindings[mapType][keyBinding]
   endfor
 endfor
