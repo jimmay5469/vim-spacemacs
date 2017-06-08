@@ -1,6 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Native Keybindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let s:nativeKeybindings = {
   \ 'nnoremap': {
     \ '<TAB>': '<C-^>',
@@ -36,71 +37,71 @@ let s:nativeKeybindings = {
   \ },
 \ }
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Keybindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let s:pluginKeybindings = {
-  \ 'airblade/vim-gitgutter': {
-    \ 'nnoremap': {
-      \ 'Td': ':GitGutterToggle<CR>',
-    \ },
+let s:pluginKeybindings = {}
+let s:pluginKeybindings['airblade/vim-gitgutter'] = {
+  \ 'nnoremap': {
+    \ 'Td': ':GitGutterToggle<CR>',
   \ },
-  \ 'easymotion/vim-easymotion': {
-    \ 'nmap': {
-      \ 'y': '<Plug>(easymotion-bd-jk)',
-    \ },
+\ }
+let s:pluginKeybindings['easymotion/vim-easymotion'] = {
+  \ 'nmap': {
+    \ 'y': '<Plug>(easymotion-bd-jk)',
   \ },
-  \ 'kien/ctrlp.vim': {
-    \ 'nnoremap': {
-      \ 'ff': ':CtrlPCurFile<CR>',
-      \ 'fr': ':CtrlPMRU<CR>',
-      \ 'pf': ':CtrlPRoot<CR>',
-    \ },
+\ }
+let s:pluginKeybindings['kien/ctrlp.vim'] = {
+  \ 'nnoremap': {
+    \ 'ff': ':CtrlPCurFile<CR>',
+    \ 'fr': ':CtrlPMRU<CR>',
+    \ 'pf': ':CtrlPRoot<CR>',
   \ },
-  \ 'mbbill/undotree': {
-    \ 'nnoremap': {
-      \ 'au': ':UndotreeToggle<CR>',
-    \ },
+\ }
+let s:pluginKeybindings['mbbill/undotree'] = {
+  \ 'nnoremap': {
+    \ 'au': ':UndotreeToggle<CR>',
   \ },
-  \ 'rking/ag.vim': {
-    \ 'nnoremap': {
-      \ 'sp': ':Ag<SPACE>',
-    \ },
+\ }
+let s:pluginKeybindings['rking/ag.vim'] = {
+  \ 'nnoremap': {
+    \ 'sp': ':Ag<SPACE>',
   \ },
-  \ 'scrooloose/nerdtree': {
-    \ 'nnoremap': {
-      \ 'ft': ':NERDTreeToggle<CR>',
-    \ },
+\ }
+let s:pluginKeybindings['scrooloose/nerdtree'] = {
+  \ 'nnoremap': {
+    \ 'ft': ':NERDTreeToggle<CR>',
   \ },
-  \ 'shougo/unite.vim': {
-    \ 'nmap': {
-      \ '?': ':Unite output:nmap\ \<LEADER\><CR>',
-    \ },
+\ }
+let s:pluginKeybindings['shougo/unite.vim'] = {
+  \ 'nmap': {
+    \ '?': ':Unite output:nmap\ \<LEADER\><CR>',
   \ },
-  \ 'szw/vim-maximizer': {
-    \ 'nnoremap': {
-      \ 'wm': ':MaximizerToggle<CR>',
-    \ },
+\ }
+let s:pluginKeybindings['szw/vim-maximizer'] = {
+  \ 'nnoremap': {
+    \ 'wm': ':MaximizerToggle<CR>',
   \ },
-  \ 'tpope/vim-commentary': {
-    \ 'nmap': {
-      \ ';': ' <Plug>Commentary',
-      \ ';;': '<Plug>CommentaryLine',
-    \ },
-    \ 'vmap': {
-      \ ';': ' <Plug>Commentary',
-    \ },
-    \ 'omap': {
-      \ ';': ' <Plug>Commentary',
-    \ },
+\ }
+let s:pluginKeybindings['tpope/vim-commentary'] = {
+  \ 'nmap': {
+    \ ';': ' <Plug>Commentary',
+    \ ';;': '<Plug>CommentaryLine',
   \ },
-  \ 'tpope/vim-fugitive': {
-    \ 'nnoremap': {
-      \ 'gb': ':Gblame<CR>',
-      \ 'gd': ':Gdiff<CR>',
-      \ 'gs': ':Gstatus<CR>',
-    \ },
+  \ 'vmap': {
+    \ ';': ' <Plug>Commentary',
+  \ },
+  \ 'omap': {
+    \ ';': ' <Plug>Commentary',
+  \ },
+\ }
+let s:pluginKeybindings['tpope/vim-fugitive'] = {
+  \ 'nnoremap': {
+    \ 'gb': ':Gblame<CR>',
+    \ 'gd': ':Gdiff<CR>',
+    \ 'gs': ':Gstatus<CR>',
   \ },
 \ }
 
