@@ -19,7 +19,7 @@ Using Vundle:
 Plugin 'jimmay5469/vim-spacemacs'
 ```
 
-### Leader Key ###
+## Leader Key ##
 
 By default this plugin uses whatever leader key you have set up. If you like Spacemacs and you aren't already using `<SPACE>` as your leader key, then you can set it in your `.vimrc` using the following:
 
