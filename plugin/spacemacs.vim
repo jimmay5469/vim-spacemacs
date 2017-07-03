@@ -60,6 +60,16 @@ let s:pluginKeyBindings['kien/ctrlp.vim'] = {
     \ 'pf': ':CtrlPRoot<CR>',
   \ },
 \ }
+let s:pluginKeyBindings['junegunn/fzf.vim'] = {
+  \ 'nnoremap': {
+    \ '?': ':Maps<CR>',
+    \ 'bb': ':Buffers<CR>',
+    \ 'gfh': ':BCommits<CR>',
+    \ 'gs': ':GFiles?<CR>',
+    \ 'pf': ':Files<CR>',
+    \ 'sp': ':Ag<CR>',
+  \ },
+\ }
 let s:pluginKeyBindings['mbbill/undotree'] = {
   \ 'nnoremap': {
     \ 'au': ':UndotreeToggle<CR>',
