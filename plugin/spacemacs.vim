@@ -66,7 +66,7 @@ let s:pluginKeyBindings['junegunn/fzf.vim'] = {
     \ 'bb': ':Buffers<CR>',
     \ 'gfh': ':BCommits<CR>',
     \ 'gs': ':GFiles?<CR>',
-    \ 'pf': ':GFiles<CR>',
+    \ 'pf': ':Files<CR>',
     \ 'sp': ':Ag<CR>',
   \ },
 \ }
