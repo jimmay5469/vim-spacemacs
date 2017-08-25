@@ -70,6 +70,11 @@ let s:pluginKeyBindings['junegunn/fzf.vim'] = {
     \ 'sp': ':Ag<CR>',
   \ },
 \ }
+let s:pluginKeyBindings['majutsushi/tagbar'] = {
+  \ 'nnoremap': {
+    \ 'sj': ':TagbarOpenAutoClose<CR>',
+  \ },
+\ }
 let s:pluginKeyBindings['mbbill/undotree'] = {
   \ 'nnoremap': {
     \ 'au': ':UndotreeToggle<CR>',
