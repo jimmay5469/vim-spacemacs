@@ -14,6 +14,7 @@ let s:nativeKeyBindings = {
     \ 'ep': ':lprev<CR>',
     \ 'fed': ':e ~/.vimrc<CR>',
     \ 'feR': ':source ~/.vimrc<CR>',
+    \ 'ff': ':e <C-R>=substitute(expand("%:p:h"), $HOME, "~", "")<CR>/',
     \ 'fs': ':w<CR>',
     \ 'fS': ':wa<CR>',
     \ 'j=': 'mzgg=G`z',
