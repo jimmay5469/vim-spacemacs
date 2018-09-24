@@ -5,7 +5,7 @@
 let s:nativeKeyBindings = {
   \ 'nnoremap': {
     \ '<TAB>': '<C-^>',
-    \ 'bb': ':buffers<CR>',
+    \ 'bb': ':buffers<CR>:buffer<Space>',
     \ 'bd': ':bdelete<CR>',
     \ 'bn': ':bn<CR>',
     \ 'bp': ':bp<CR>',
