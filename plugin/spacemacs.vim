@@ -51,7 +51,7 @@ let s:pluginKeyBindings['airblade/vim-gitgutter'] = {
 \ }
 let s:pluginKeyBindings['easymotion/vim-easymotion'] = {
   \ 'nmap': {
-    \ 'y': '<Plug>(easymotion-bd-jk)',
+    \ 'jj': '<Plug>(easymotion-overwin-f)',
   \ },
 \ }
 let s:pluginKeyBindings['kien/ctrlp.vim'] = {
